@@ -1,4 +1,4 @@
-package principal;
+package Views;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -20,6 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+
+import principal.Utils;
 
 public class UsuarioView extends JPanel {
 

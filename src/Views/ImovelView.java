@@ -1,4 +1,4 @@
-package principal;
+package Views;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -34,6 +34,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+
+import principal.Utils;
 
 import com.sun.corba.se.impl.javax.rmi.CORBA.Util;
 

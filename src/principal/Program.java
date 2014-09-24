@@ -21,6 +21,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Views.ConsultaMaster;
+import Views.ImovelConsultaView;
+import Views.ImovelView;
+import Views.MenuView;
+import Views.UsuarioView;
+
 class Home extends JFrame {
 
 	private JPanel pnlPrincipal;	
@@ -49,9 +55,11 @@ class Home extends JFrame {
 		m.btnImovel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				EscondePanels();
-				pnlPrincipal.add(imovelView, BorderLayout.CENTER);
-				showView();
+				ImovelConsultaView consulta = new ImovelConsultaView();
+				consulta.setVisible(true);
+//				EscondePanels();
+//				pnlPrincipal.add(imovelView, BorderLayout.CENTER);
+//				showView();
 			}
 		});
 		
