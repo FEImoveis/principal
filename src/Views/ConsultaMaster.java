@@ -28,6 +28,8 @@ public abstract class ConsultaMaster extends JFrame {
 
 	public abstract void sair();
 	public abstract void montaConteudo();
+	public abstract void incluir();
+	public abstract void editar();
 	
 	private void InstanciaObjeto() {
 		pnlCabecalho = new JPanel(new GridBagLayout());
@@ -79,6 +81,23 @@ public abstract class ConsultaMaster extends JFrame {
 				sair();
 			}
 		});
+		
+		btnIncluir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				incluir();
+			}
+		});
+		
+		btnEditar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				editar();
+			}
+		});
+		
 	}
 
 	private void montaPnlPrincipal() {

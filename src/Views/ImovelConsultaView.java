@@ -15,7 +15,7 @@ public class ImovelConsultaView extends ConsultaMaster {
 
 	@Override
 	public void sair() {
-		super.setVisible(false);
+		super.dispose();
 	}
 	
 	@Override
@@ -44,5 +44,17 @@ public class ImovelConsultaView extends ConsultaMaster {
 		barraRolagem = new JScrollPane(tabela);
 		barraRolagem.setPreferredSize(new Dimension(700,300));
 		Utils.addGridBag(pnlConteudo, barraRolagem, 0, 0);
+	}
+
+	@Override
+	public void incluir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void editar() {
+		// TODO Auto-generated method stub
+		
 	}
 }

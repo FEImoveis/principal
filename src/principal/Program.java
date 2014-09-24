@@ -21,24 +21,25 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Views.CadastroMaster;
 import Views.ConsultaMaster;
 import Views.ImovelConsultaView;
 import Views.ImovelView;
 import Views.MenuView;
+import Views.UsuarioCadastroView;
+import Views.UsuarioConsultaView;
 import Views.UsuarioView;
 
 class Home extends JFrame {
 
 	private JPanel pnlPrincipal;	
-	private ImovelView imovelView = new ImovelView();
 	private Home aux = this;
 	private MenuView m = new MenuView();
-	private UsuarioView usuarioView; 
+	private ImovelConsultaView imovelConsulta;
+	private UsuarioConsultaView usuarioConsulta;
 	
 	public Home() {
 		pnlPrincipal = new JPanel(new BorderLayout());
-		
-		usuarioView = new UsuarioView();
 		
 		pnlPrincipal.add(m, BorderLayout.NORTH);
 		
@@ -46,20 +47,16 @@ class Home extends JFrame {
 		m.btnUsuario.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				EscondePanels();
-				pnlPrincipal.add(usuarioView, BorderLayout.CENTER);
-				showView();
+				usuarioConsulta = new UsuarioConsultaView();
+				usuarioConsulta.setVisible(true);
 			}
 		});
 
 		m.btnImovel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ImovelConsultaView consulta = new ImovelConsultaView();
-				consulta.setVisible(true);
-//				EscondePanels();
-//				pnlPrincipal.add(imovelView, BorderLayout.CENTER);
-//				showView();
+				imovelConsulta = new ImovelConsultaView();
+				imovelConsulta.setVisible(true);
 			}
 		});
 		
@@ -70,8 +67,7 @@ class Home extends JFrame {
 	}
 
 	private void EscondePanels() {
-		pnlPrincipal.remove(usuarioView);
-		pnlPrincipal.remove(imovelView);
+		
 	}
 	
 	private void showView(){
