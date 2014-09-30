@@ -49,7 +49,8 @@ public class ImovelConsultaView extends ConsultaMaster {
 	@Override
 	public void incluir() {
 		// TODO Auto-generated method stub
-		
+		ImovelCadastroView cadastro = new ImovelCadastroView();
+		cadastro.setVisible(true);
 	}
 
 	@Override

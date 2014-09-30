@@ -14,6 +14,20 @@ import javax.swing.plaf.basic.BasicBorders.MarginBorder;
 
 import sun.reflect.generics.visitor.Reifier;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
+
 public class Utils {
 	static Toolkit toolkit = Toolkit.getDefaultToolkit();
 	static Dimension screen = toolkit.getScreenSize();
@@ -125,4 +139,5 @@ public class Utils {
 
 		return resizedImage;
 	}
+
 }

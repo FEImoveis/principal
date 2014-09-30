@@ -13,14 +13,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.ParseException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRootPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
+
+
+import de.javasoft.plaf.synthetica.SyntheticaClassyLookAndFeel;
 import Views.CadastroMaster;
 import Views.ConsultaMaster;
 import Views.ImovelConsultaView;
@@ -59,6 +67,17 @@ class Home extends JFrame {
 				imovelConsulta.setVisible(true);
 			}
 		});
+		
+		try {
+			UIManager.setLookAndFeel(new SyntheticaClassyLookAndFeel());
+			SwingUtilities.updateComponentTreeUI(this);
+		} catch (UnsupportedLookAndFeelException | ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.setUndecorated(true);
+        this.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+		this.setDefaultLookAndFeelDecorated(true);
 		
 		Utils.setLocation(this);
 		
