@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-import principal.Utils;
+import utils.Utils;
 
 public class UsuarioView extends JPanel {
 

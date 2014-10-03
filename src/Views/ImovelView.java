@@ -35,7 +35,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
-import principal.Utils;
+import utils.Utils;
 
 import com.sun.corba.se.impl.javax.rmi.CORBA.Util;
 

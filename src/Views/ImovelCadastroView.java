@@ -31,6 +31,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.text.MaskFormatter;
@@ -40,8 +41,10 @@ import java.text.NumberFormat;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 import com.sun.org.apache.xerces.internal.util.MessageFormatter;
 
-import principal.JNumberFormatField;
-import principal.Utils;
+import sun.util.calendar.JulianCalendar;
+import utils.JNumberFormatField;
+import utils.Utils;
+import utils.ZoomMaster;
 
 public class ImovelCadastroView extends CadastroMaster {
 
@@ -66,8 +69,10 @@ public class ImovelCadastroView extends CadastroMaster {
 	private JTextField txtRua;
 	private JTextField txtComplemento;
 	private JTextField txtBairro;
-	private JTextField txtCidade;
-	private JTextField txtCorretor;
+	private JTextField txtCidade;	
+
+	private ZoomMaster zoomCidade;
+	private ZoomMaster zoomCorretor;
 	
 	private JTextField txtArea;
 	private MaskFormatter mskArea = null;
@@ -94,7 +99,8 @@ public class ImovelCadastroView extends CadastroMaster {
 	private JPanel pnlCima;
 	private JPanel pnlCadastro;
 	private JPanel pnlAtributos;
-	private JPanel pnlOutrasInformacoes;
+	private JPanel pnlOutrasInformacoes;	
+	
 
 	private GridBagConstraints restricoes = new GridBagConstraints();
 
@@ -109,7 +115,7 @@ public class ImovelCadastroView extends CadastroMaster {
 
 	}
 
-	private void montaPnlOutrasInformacoes() {
+	private void montaPnlOutrasInformacoes() {		
 
 		Insets margin = new Insets(5, 5, 5, 5);
 
@@ -146,13 +152,13 @@ public class ImovelCadastroView extends CadastroMaster {
 
 		Utils.addGridBag(pnlAtributos, pnlOutrasInformacoes, 1, 6, margin, 2, 3);
 
-	}
-
+	}	
+	
 	private void montaPnlAtributos() {
 
 		Insets margin = new Insets(2, 3, 2, 3);
-		pnlAtributos.setBorder(BorderFactory.createTitledBorder(BorderFactory
-				.createEtchedBorder()));
+//		pnlAtributos.setBorder(BorderFactory.createTitledBorder(BorderFactory
+//				.createEtchedBorder()));
 
 		// Código
 		lblCod = new JLabel("Código");
@@ -236,9 +242,12 @@ public class ImovelCadastroView extends CadastroMaster {
 		Utils.addGridBag(pnlAtributos, lblCorretor, 0, 10, margin, 1, 1,
 				GridBagConstraints.EAST);
 
-		txtCorretor = new JTextField(30);
+		/*txtCorretor = new JTextField(30);
 		Utils.addGridBag(pnlAtributos, txtCorretor, 1, 10, margin, 3, 1,
-				GridBagConstraints.WEST);
+				GridBagConstraints.WEST);*/
+		
+		zoomCorretor = new ZoomMaster(new UsuarioConsultaView(), 30);
+		Utils.addGridBag(pnlAtributos, zoomCorretor, 1, 10, margin, 5, 1, GridBagConstraints.WEST);
 
 		// Banheiros
 		lblBanheiro = new JLabel("Banheiros");
@@ -285,9 +294,12 @@ public class ImovelCadastroView extends CadastroMaster {
 		Utils.addGridBag(pnlAtributos, lblCidade, 0, 3, margin, 1, 1,
 				GridBagConstraints.EAST);
 
-		txtCidade = new JTextField(50);
-		Utils.addGridBag(pnlAtributos, txtCidade, 1, 3, margin, 5, 1,
+		/*txtCidade = new JTextField(41);
+		Utils.addGridBag(pnlAtributos, txtCidade, 1, 3, new Insets(5, 5, 5, 0), 5, 1,
 				GridBagConstraints.WEST);
+		*/
+		zoomCidade = new ZoomMaster(new UsuarioConsultaView(), 39);
+		Utils.addGridBag(pnlAtributos, zoomCidade, 1, 3, new Insets(0, 0, 0, 0), 5, 1, GridBagConstraints.WEST);
 
 		// area
 		lblArea = new JLabel("Area m²");
@@ -320,8 +332,13 @@ public class ImovelCadastroView extends CadastroMaster {
 		InstanciaObjetos();
 
 		montaPnlConteudo();
-
-		Utils.addGridBag(pnlConteudo, pnlPrincipal, 0, 0);
+		
+		JTabbedPane jtpTabs = new JTabbedPane();
+		//adiciona os panels como tabs
+		jtpTabs.addTab("Cadastro", pnlPrincipal);
+		jtpTabs.addTab("Imagens", new utils.ImagensMaster(1, 300, 400));		
+		
+		Utils.addGridBag(pnlConteudo, jtpTabs, 0, 0);
 	}
 
 	@Override
@@ -331,9 +348,15 @@ public class ImovelCadastroView extends CadastroMaster {
 	}
 
 	private void montaPnlConteudo() {
+		montaPnlImagem();
 		montaPnlAtributos();
 
 		pnlPrincipal.add(pnlAtributos);
+	}
+
+	private void montaPnlImagem() {
+		// TODO Auto-generated method stub
+	
 	}
 
 }

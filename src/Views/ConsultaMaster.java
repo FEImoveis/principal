@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import principal.Utils;
+import utils.Utils;
 
 public abstract class ConsultaMaster extends JFrame {
 
@@ -26,7 +26,10 @@ public abstract class ConsultaMaster extends JFrame {
 	private JButton btnBuscar, btnIncluir, btnEditar, btnExcluir, btnSair;
 	private JComboBox<String> cboFiltro;
 
-	public abstract void sair();
+	public void sair() {
+		dispose();
+	}
+
 	public abstract void montaConteudo();
 	public abstract void incluir();
 	public abstract void editar();

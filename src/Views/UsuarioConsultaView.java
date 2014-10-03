@@ -2,14 +2,11 @@ package Views;
 
 import javax.swing.JLabel;
 
-import principal.Utils;
+import utils.Utils;
 
 public class UsuarioConsultaView extends ConsultaMaster{
 
-	@Override
-	public void sair() {
-		super.dispose();
-	}
+
 
 	@Override
 	public void montaConteudo() {

@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import principal.Utils;
+import utils.Utils;
 
 public class ImovelConsultaView extends ConsultaMaster {
 

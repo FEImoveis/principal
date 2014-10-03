@@ -12,12 +12,12 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import principal.Utils;
+import utils.Utils;
 
 public abstract class CadastroMaster extends JFrame {
 
 	private JPanel pnlPrincipal, pnlRodape, pnlCabecalho;
-	public JPanel pnlConteudo;
+	protected JPanel pnlConteudo;
 	public JLabel lblTitulo;
 	private JButton btnGravar, btnCancelar;
 
