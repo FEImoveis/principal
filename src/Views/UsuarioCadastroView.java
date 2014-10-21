@@ -11,9 +11,12 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import businessObejct.UsuarioBO;
+import businessObejct.UsuarioBO.UsuarioException;
 import utils.Utils;
 
 public class UsuarioCadastroView extends CadastroMaster {
@@ -57,7 +60,14 @@ public class UsuarioCadastroView extends CadastroMaster {
 
 	@Override
 	public void gravar() {
-
+		UsuarioBO usuario = new UsuarioBO();
+		try {
+			usuario.setTelfone(txtNumero.getText());
+		} catch (UsuarioException e2) {
+			JOptionPane.showMessageDialog(null, e2.message);
+		}
+		
+		//usuarioDAO.salvar(usuario);
 	}
 
 	@Override

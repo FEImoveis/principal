@@ -36,12 +36,12 @@ public class Utils {
 
 	public static void setLocation(JFrame frame) {
 		int h, w;
-		w = 800; // height
-		h = 600; // width
+		w = 1024; // height
+		h = 768; // width
 
 		frame.pack();
 		frame.setSize(w, h);
-		frame.setSize(800, 600);
+		frame.setSize(w, h);
 		frame.setLocation((((screen.width - frame.getSize().width) / 2)),
 				((screen.height - frame.getSize().height) / 2));
 

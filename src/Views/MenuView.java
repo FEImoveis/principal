@@ -12,6 +12,8 @@ import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JWindow;
@@ -27,7 +29,7 @@ public class MenuView extends JPanel {
 	Toolkit toolkit = Toolkit.getDefaultToolkit();
 	Dimension screen = toolkit.getScreenSize();
 	
-	public JButton btnPrincipal, btnUsuario, btnImovel;
+	public JButton btnPrincipal, btnUsuario, btnImovel, btnVisita;
 	
 	public MenuView() {
 		// TODO Auto-generated constructor stub
@@ -39,9 +41,11 @@ public class MenuView extends JPanel {
 				
 		this.setLayout(new GridLayout(1,3));		
 		
+		
 		btnImovel = new JButton();
 		btnPrincipal = new JButton();
 		btnUsuario = new JButton();		
+		btnVisita = new JButton("Visita");
 		
 		btnUsuario.setText("Usuario");
 		btnImovel.setText("Imovel");
