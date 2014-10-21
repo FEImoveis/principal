@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -33,6 +34,7 @@ public abstract class ConsultaMaster extends JFrame {
 	public abstract void montaConteudo();
 	public abstract void incluir();
 	public abstract void editar();
+	public abstract void excluir();
 	
 	private void InstanciaObjeto() {
 		pnlCabecalho = new JPanel(new GridBagLayout());
@@ -101,6 +103,17 @@ public abstract class ConsultaMaster extends JFrame {
 			}
 		});
 		
+		btnExcluir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int resp = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir?");
+				
+				if(resp == 0)
+					excluir();
+				
+			}
+		});
 	}
 
 	private void montaPnlPrincipal() {

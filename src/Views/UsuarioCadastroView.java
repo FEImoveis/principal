@@ -61,13 +61,22 @@ public class UsuarioCadastroView extends CadastroMaster {
 	@Override
 	public void gravar() {
 		UsuarioBO usuario = new UsuarioBO();
+	
 		try {
-			usuario.setTelfone(txtNumero.getText());
-		} catch (UsuarioException e2) {
-			JOptionPane.showMessageDialog(null, e2.message);
+			usuario.setNome(txtNome.getText());
+			usuario.setCodigo(Integer.parseInt(txtCodigo.getText()));
+			usuario.setEmail(txtEmail.getText());
+			usuario.setNumero(txtNumero.getText());
+			usuario.setUsuario(txtUsuario.getText());
+			
+			usuario.Gravar();
+		} catch(UsuarioException e)
+		{
+			JOptionPane.showMessageDialog(null, "Ocoorreu um erro "+ e.message);
 		}
-		
-		//usuarioDAO.salvar(usuario);
+		catch (Exception e) {
+			// TODO: handle exception
+		}		
 	}
 
 	@Override

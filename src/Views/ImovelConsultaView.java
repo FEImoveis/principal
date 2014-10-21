@@ -79,4 +79,10 @@ public class ImovelConsultaView extends ConsultaMaster {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void excluir() {
+		// TODO Auto-generated method stub
+		
+	}
 }

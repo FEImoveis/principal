@@ -30,4 +30,10 @@ public class VisitaConsultaView extends ConsultaMaster {
 		
 	}
 
+	@Override
+	public void excluir() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -26,4 +26,10 @@ public class UsuarioConsultaView extends ConsultaMaster{
 		cadastro.setVisible(true);
 	}
 
+	@Override
+	public void excluir() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
