@@ -35,14 +35,14 @@ public class ZoomMaster extends JPanel {
 
 		this.setLayout(new GridBagLayout());
 
-		montaCampos(tela, 0);
+		montaCampos(tela, 0, true);
 	}
 
-	public ZoomMaster(JFrame usuarioConsultaView, int i) {
-		montaCampos(usuarioConsultaView, i);
+	public ZoomMaster(JFrame usuarioConsultaView, int i, boolean edit) {
+		montaCampos(usuarioConsultaView, i, edit);
 	}
 
-	private void montaCampos(JFrame tela, int tamanhoDesc) {
+	private void montaCampos(JFrame tela, int tamanhoDesc,  boolean edit) {
 		// TODO Auto-generated method stub
 		btnZoom = new JButton();
 
@@ -55,6 +55,8 @@ public class ZoomMaster extends JPanel {
 
 		String path = "src\\Views\\imagens\\lupa.png";
 
+		txtDesc.setEditable(edit);
+		
 		Image image;
 		try {
 			image = Utils.resizeImage(ImageIO.read(new File(path)), ImageIO

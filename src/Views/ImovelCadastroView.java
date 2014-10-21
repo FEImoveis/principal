@@ -246,7 +246,7 @@ public class ImovelCadastroView extends CadastroMaster {
 		Utils.addGridBag(pnlAtributos, txtCorretor, 1, 10, margin, 3, 1,
 				GridBagConstraints.WEST);*/
 		
-		zoomCorretor = new ZoomMaster(new UsuarioConsultaView(), 30);
+		zoomCorretor = new ZoomMaster(new UsuarioConsultaView(), 30, true);
 		Utils.addGridBag(pnlAtributos, zoomCorretor, 1, 10, margin, 5, 1, GridBagConstraints.WEST);
 
 		// Banheiros
@@ -298,7 +298,7 @@ public class ImovelCadastroView extends CadastroMaster {
 		Utils.addGridBag(pnlAtributos, txtCidade, 1, 3, new Insets(5, 5, 5, 0), 5, 1,
 				GridBagConstraints.WEST);
 		*/
-		zoomCidade = new ZoomMaster(new UsuarioConsultaView(), 39);
+		zoomCidade = new ZoomMaster(new UsuarioConsultaView(), 39, true);
 		Utils.addGridBag(pnlAtributos, zoomCidade, 1, 3, new Insets(0, 0, 0, 0), 5, 1, GridBagConstraints.WEST);
 
 		// area
