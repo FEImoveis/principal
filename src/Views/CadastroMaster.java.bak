@@ -20,7 +20,6 @@ public abstract class CadastroMaster extends JFrame {
 	protected JPanel pnlConteudo;
 	public JLabel lblTitulo;
 	private JButton btnGravar, btnCancelar;
-	private MenuView m;
 
 	public abstract void gravar();
 
@@ -48,18 +47,9 @@ public abstract class CadastroMaster extends JFrame {
 		montaPnlCabecalho();
 		montaPnlConteudo();
 		montaPnlRodape();
-		montaMenu();
 		montaPnlPrincipal();
-		
 
 		this.add(pnlPrincipal);
-	}
-
-	private void montaMenu() {
-		// TODO Auto-generated method stub		
-		m = new MenuView();
-		m.menuEditar();	
-		//m.showWindow();
 	}
 
 	private void montaPnlPrincipal() {
@@ -67,8 +57,6 @@ public abstract class CadastroMaster extends JFrame {
 		pnlPrincipal.add(pnlCabecalho, BorderLayout.NORTH);
 		pnlPrincipal.add(pnlConteudo, BorderLayout.CENTER);
 		pnlPrincipal.add(pnlRodape, BorderLayout.SOUTH);
-		//pnlPrincipal.add(m,BorderLayout.NORTH);
-		setJMenuBar(m);
 	}
 
 	private void montaPnlRodape() {

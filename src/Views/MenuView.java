@@ -2,32 +2,29 @@ package Views;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.text.ParseException;
+import java.awt.event.InputEvent;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JWindow;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.KeyStroke;
 
-import java.awt.Toolkit;
+import com.sun.glass.events.KeyEvent;
 
-public class MenuView extends JPanel {
+public class MenuView extends JMenuBar{
 
 	private JPanel window = new JPanel(new BorderLayout());
 	Toolkit toolkit = Toolkit.getDefaultToolkit();
 	Dimension screen = toolkit.getScreenSize();
+	private ImovelConsultaView imovelConsulta;
+	private UsuarioConsultaView usuarioConsulta;
+	
 	
 	public JButton btnPrincipal, btnUsuario, btnImovel, btnVisita;
 	
@@ -38,10 +35,9 @@ public class MenuView extends JPanel {
 
 	private void createWindow() {
 		// TODO Auto-generated method stub
-				
-		this.setLayout(new GridLayout(1,3));		
 		
-		
+		menuConsultas();		
+		/*				
 		btnImovel = new JButton();
 		btnPrincipal = new JButton();
 		btnUsuario = new JButton();		
@@ -54,14 +50,129 @@ public class MenuView extends JPanel {
 		this.add(btnImovel);
 		this.add(btnPrincipal);
 		this.add(btnUsuario);				
-		
+		*/
 		showWindow();
+	
+	}
+	public void menuEditar() {		
+		// criação do menu Editar
+	    JMenu menuEditar = new JMenu("Editar");
+	    menuEditar.setMnemonic('E');
+	    JMenuItem itemRecortar = new JMenuItem("Recortar...");	             
+	    itemRecortar.setMnemonic('t');
+	    itemRecortar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X,
+	                 InputEvent.CTRL_MASK));;
+	    JMenuItem itemCopiar = new JMenuItem("Copiar...");
+	    itemCopiar.setMnemonic('b');
+	    itemCopiar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,
+	               InputEvent.CTRL_MASK));;
+	    JMenuItem itemColar = new JMenuItem("Colar...");
+	    itemColar.setMnemonic('S');
+	    itemColar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V,
+	              InputEvent.CTRL_MASK));;
+	    menuEditar.add(itemRecortar);
+	    menuEditar.add(itemCopiar);
+	    menuEditar.add(itemColar);
+	    this.add(menuEditar);
+	    
+	    itemRecortar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	    itemCopiar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	    itemColar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 	}
-	
 
+	public void menuConsultas() {
+		// TODO Auto-generated method stub
+		JMenuItem itemMenuImovel = new JMenuItem("Imóvel");
+		JMenuItem itemMenuUsuario = new JMenuItem("Usuário");
+		JMenuItem itemMenuVisita = new JMenuItem("Visita");
+		JMenuItem itemSair = new JMenuItem("Sair");
+		JMenu menu = new JMenu("Consultas");	
+		
+		itemMenuImovel.setMnemonic('I');
+		itemMenuImovel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,
+                ActionEvent.SHIFT_MASK + ActionEvent.CTRL_MASK));
+		
+		itemMenuUsuario.setMnemonic('U');
+		itemMenuUsuario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U,
+                ActionEvent.SHIFT_MASK + ActionEvent.CTRL_MASK));
+		
+		itemMenuVisita.setMnemonic('V');
+		itemMenuVisita.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V,
+                ActionEvent.SHIFT_MASK + ActionEvent.CTRL_MASK));		
+		
+		menu.add(itemMenuImovel);
+		menu.add(itemMenuUsuario);
+		menu.add(itemMenuVisita);
+		menu.addSeparator();
+		menu.add(itemSair);
 
-	private void showWindow() {
+		itemSair.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int resp = JOptionPane.showConfirmDialog(null,
+						"Deseja encerrar a aplicação", "Confirmação",
+						JOptionPane.YES_NO_OPTION);
+
+				if (resp == 0)
+					System.exit(0);
+			}
+		});
+
+		itemMenuImovel.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				imovelConsulta = new ImovelConsultaView();
+				imovelConsulta.setVisible(true);
+			}
+		});
+
+		itemMenuUsuario.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				usuarioConsulta = new UsuarioConsultaView();
+				usuarioConsulta.setVisible(true);
+			}
+		});
+
+		itemMenuVisita.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VisitaConsultaView visitaConsulta = new VisitaConsultaView();
+				visitaConsulta.setVisible(true);
+			}
+		});
+		
+		this.add(menu);				
+
+	}
+
+	public void showWindow() {
 		// TODO Auto-generated method stub
 
 		int h, w;
