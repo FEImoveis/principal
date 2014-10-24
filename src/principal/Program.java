@@ -19,6 +19,7 @@ import java.awt.event.WindowEvent;
 import java.text.ParseException;
 
 import javax.swing.JComboBox;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -51,85 +52,13 @@ class Home extends JFrame {
 	private MenuView m = new MenuView();
 	private ImovelConsultaView imovelConsulta;
 	private UsuarioConsultaView usuarioConsulta;
+	private JDesktopPane desktopPane;
 
 	public Home() {
 		pnlPrincipal = new JPanel(new BorderLayout());
-
-		pnlPrincipal.add(m, BorderLayout.NORTH);
-
-		MenuBar menuBar = new MenuBar();
-		MenuItem itemMenuImovel = new MenuItem("Imóvel");
-		MenuItem itemMenuUsuario = new MenuItem("Usuário");
-		MenuItem itemMenuVisita = new MenuItem("Visita");
-		MenuItem itemSair = new MenuItem("Sair");
-		Menu menu = new Menu("Consultas");
-
-		menu.add(itemMenuImovel);
-		menu.add(itemMenuUsuario);
-		menu.add(itemMenuVisita);
-		menu.addSeparator();
-		menu.add(itemSair);
-
-		menuBar.add(menu);
-		setMenuBar(menuBar);
-
-		itemSair.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int resp = JOptionPane.showConfirmDialog(null,
-						"Deseja encerrar a aplicação", "Confirmação",
-						JOptionPane.YES_NO_OPTION);
-
-				if (resp == 0)
-					System.exit(0);
-			}
-		});
-
-		itemMenuImovel.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				imovelConsulta = new ImovelConsultaView();
-				imovelConsulta.setVisible(true);
-			}
-		});
-
-		itemMenuUsuario.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				usuarioConsulta = new UsuarioConsultaView();
-				usuarioConsulta.setVisible(true);
-			}
-		});
-
-		itemMenuVisita.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VisitaConsultaView visitaConsulta = new VisitaConsultaView();
-				visitaConsulta.setVisible(true);
-			}
-		});
-
+		// pnlPrincipal.add(m, BorderLayout.NORTH);
+		desktopPane = new JDesktopPane();
 		EscondePanels();
-		m.btnUsuario.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				usuarioConsulta = new UsuarioConsultaView();
-				usuarioConsulta.setVisible(true);
-			
-			}
-		});
-
-		m.btnImovel.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				imovelConsulta = new ImovelConsultaView();
-				imovelConsulta.setVisible(true);
-			}
-		});
 
 		try {
 			UIManager.setLookAndFeel(new SyntheticaClassyLookAndFeel());
@@ -139,14 +68,56 @@ class Home extends JFrame {
 			e.printStackTrace();
 		}
 
-//		 this.setUndecorated(true);
-//		 this.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
-//		 this.setDefaultLookAndFeelDecorated(true);
+		m.itemMenuImovel.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				imovelConsulta = new ImovelConsultaView();
+				imovelConsulta.setVisible(true);
+				imovelConsulta.setSize(1000, 600);
+				imovelConsulta.setLocation(10, 10);
+
+				desktopPane.add(imovelConsulta);
+			}
+		});
+		
+		m.itemMenuUsuario.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				usuarioConsulta = new UsuarioConsultaView();
+				usuarioConsulta.setVisible(true);
+				usuarioConsulta.setSize(1000, 600);
+				usuarioConsulta.setLocation(10, 10);
+
+				desktopPane.add(usuarioConsulta);
+			}
+		});
+		
+		m.itemMenuVisita.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VisitaConsultaView visita = new VisitaConsultaView();
+				visita.setVisible(true);
+				visita.setSize(1000, 600);
+				visita.setLocation(10, 10);
+
+				desktopPane.add(visita);
+			}
+		});
+
+		this.setUndecorated(true);
+		this.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+		this.setDefaultLookAndFeelDecorated(true);
 
 		Utils.setLocation(this);
 
 		Container P = getContentPane();
-		P.add(pnlPrincipal);
+		P.setLayout(new BorderLayout());
+		P.add(m, BorderLayout.NORTH);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		P.add(desktopPane, BorderLayout.CENTER);
 	}
 
 	private void EscondePanels() {

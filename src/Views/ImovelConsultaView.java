@@ -72,6 +72,10 @@ public class ImovelConsultaView extends ConsultaMaster {
 		// TODO Auto-generated method stub
 		ImovelCadastroView cadastro = new ImovelCadastroView();
 		cadastro.setVisible(true);
+		getDesktopPane().add(cadastro);
+		cadastro.setSize(1000, 600);
+		cadastro.setLocation(10, 70);
+		cadastro.setResizable(true);
 	}
 
 	@Override

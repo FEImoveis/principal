@@ -20,8 +20,12 @@ public class VisitaConsultaView extends ConsultaMaster {
 	@Override
 	public void incluir() {
 		// TODO Auto-generated method stub
-		VisitaCadastroView visita = new VisitaCadastroView();
-		visita.setVisible(true);
+		VisitaCadastroView cadastro = new VisitaCadastroView();
+		cadastro.setVisible(true);
+		getDesktopPane().add(cadastro);
+		cadastro.setSize(1000, 600);
+		cadastro.setLocation(10, 10);
+		cadastro.setResizable(true);
 	}
 
 	@Override

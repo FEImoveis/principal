@@ -17,6 +17,10 @@ public class UsuarioConsultaView extends ConsultaMaster{
 	public void incluir() {
 		UsuarioCadastroView cadastro = new UsuarioCadastroView();
 		cadastro.setVisible(true);
+		getDesktopPane().add(cadastro);
+		cadastro.setSize(1000, 600);
+		cadastro.setLocation(10, 10);
+		cadastro.setResizable(true);
 	}
 
 

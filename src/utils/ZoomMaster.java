@@ -16,6 +16,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -26,23 +27,23 @@ import Views.UsuarioConsultaView;
 
 public class ZoomMaster extends JPanel {
 
-	public JFrame tela;
+	public JInternalFrame tela;
 	private JButton btnZoom;
 	private JTextField txtCodigo;
 	private JTextField txtDesc;
 
-	public ZoomMaster(JFrame tela) {
+	public ZoomMaster(JInternalFrame tela) {
 
 		this.setLayout(new GridBagLayout());
 
 		montaCampos(tela, 0, true);
 	}
 
-	public ZoomMaster(JFrame usuarioConsultaView, int i, boolean edit) {
+	public ZoomMaster(JInternalFrame usuarioConsultaView, int i, boolean edit) {
 		montaCampos(usuarioConsultaView, i, edit);
 	}
 
-	private void montaCampos(JFrame tela, int tamanhoDesc,  boolean edit) {
+	private void montaCampos(JInternalFrame tela, int tamanhoDesc,  boolean edit) {
 		// TODO Auto-generated method stub
 		btnZoom = new JButton();
 

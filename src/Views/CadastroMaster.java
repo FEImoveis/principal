@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 import utils.Utils;
 
-public abstract class CadastroMaster extends JFrame {
+public abstract class CadastroMaster extends JInternalFrame {
 
 	private JPanel pnlPrincipal, pnlRodape, pnlCabecalho;
 	protected JPanel pnlConteudo;
@@ -43,8 +43,6 @@ public abstract class CadastroMaster extends JFrame {
 
 	public CadastroMaster() {
 		InstanciaObjetos();
-
-		Utils.setLocation(this);
 		montaPnlCabecalho();
 		montaPnlConteudo();
 		montaPnlRodape();

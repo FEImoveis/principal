@@ -27,8 +27,6 @@ public class UsuarioCadastroView extends CadastroMaster {
 	
 
 	public void InstanciaObjetos() {
-		
-		
 		lblCodigo = new JLabel("Código");
 		txtCodigo = new JTextField();
 		lblEmail = new JLabel("Email");
@@ -83,9 +81,7 @@ public class UsuarioCadastroView extends CadastroMaster {
 	public void montaConteudo() {
 		InstanciaObjetos();
 		
-		montaPnlConteudo();		
-		
-	
+		montaPnlConteudo();			
 	}
 	
 	@Override
