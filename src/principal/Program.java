@@ -52,12 +52,11 @@ class Home extends JFrame {
 	private MenuView m = new MenuView();
 	private ImovelConsultaView imovelConsulta;
 	private UsuarioConsultaView usuarioConsulta;
-	private JDesktopPane desktopPane;
 
 	public Home() {
 		pnlPrincipal = new JPanel(new BorderLayout());
 		// pnlPrincipal.add(m, BorderLayout.NORTH);
-		desktopPane = new JDesktopPane();
+		Utils.desktopPane = new JDesktopPane();
 		EscondePanels();
 
 		try {
@@ -68,6 +67,22 @@ class Home extends JFrame {
 			e.printStackTrace();
 		}
 
+		MontaMenu();
+
+		this.setUndecorated(true);
+		this.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
+		this.setDefaultLookAndFeelDecorated(true);
+
+		Utils.setLocation(this);
+
+		Container P = getContentPane();
+		P.setLayout(new BorderLayout());
+		P.add(m, BorderLayout.NORTH);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		P.add(Utils.desktopPane, BorderLayout.CENTER);
+	}
+
+	private void MontaMenu() {
 		m.itemMenuImovel.addActionListener(new ActionListener() {
 
 			@Override
@@ -77,7 +92,7 @@ class Home extends JFrame {
 				imovelConsulta.setSize(1000, 600);
 				imovelConsulta.setLocation(10, 10);
 
-				desktopPane.add(imovelConsulta);
+				Utils.desktopPane.add(imovelConsulta);
 			}
 		});
 		
@@ -90,7 +105,7 @@ class Home extends JFrame {
 				usuarioConsulta.setSize(1000, 600);
 				usuarioConsulta.setLocation(10, 10);
 
-				desktopPane.add(usuarioConsulta);
+				Utils.desktopPane.add(usuarioConsulta);
 			}
 		});
 		
@@ -102,22 +117,10 @@ class Home extends JFrame {
 				visita.setVisible(true);
 				visita.setSize(1000, 600);
 				visita.setLocation(10, 10);
-
-				desktopPane.add(visita);
+				
+				Utils.desktopPane.add(visita);
 			}
 		});
-
-		this.setUndecorated(true);
-		this.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
-		this.setDefaultLookAndFeelDecorated(true);
-
-		Utils.setLocation(this);
-
-		Container P = getContentPane();
-		P.setLayout(new BorderLayout());
-		P.add(m, BorderLayout.NORTH);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		P.add(desktopPane, BorderLayout.CENTER);
 	}
 
 	private void EscondePanels() {

@@ -21,6 +21,8 @@ public class UsuarioConsultaView extends ConsultaMaster{
 		cadastro.setSize(1000, 600);
 		cadastro.setLocation(10, 10);
 		cadastro.setResizable(true);
+		Utils.clearFramesLayer();
+		cadastro.setLayer(1);
 	}
 
 

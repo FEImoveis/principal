@@ -2,6 +2,8 @@ package Views;
 
 import javax.swing.JLabel;
 
+import utils.Utils;
+
 public class VisitaConsultaView extends ConsultaMaster {
 
 	
@@ -26,6 +28,8 @@ public class VisitaConsultaView extends ConsultaMaster {
 		cadastro.setSize(1000, 600);
 		cadastro.setLocation(10, 10);
 		cadastro.setResizable(true);
+		Utils.clearFramesLayer();
+		cadastro.setLayer(1);
 	}
 
 	@Override

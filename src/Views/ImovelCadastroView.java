@@ -344,7 +344,7 @@ public class ImovelCadastroView extends CadastroMaster {
 	@Override
 	public void setaTituloCadastro() {
 		// TODO Auto-generated method stub
-
+		lblTitulo.setText("Cadastro imóveis");
 	}
 
 	private void montaPnlConteudo() {

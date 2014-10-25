@@ -17,7 +17,7 @@ import utils.Utils;
 public class ImovelConsultaView extends ConsultaMaster {
 
 	public ImovelConsultaView() {
-
+//		Utils.MontaMenu();
 	}
 
 	@Override
@@ -73,8 +73,10 @@ public class ImovelConsultaView extends ConsultaMaster {
 		ImovelCadastroView cadastro = new ImovelCadastroView();
 		cadastro.setVisible(true);
 		getDesktopPane().add(cadastro);
-		cadastro.setSize(1000, 600);
+		cadastro.setSize(1000, 700);
 		cadastro.setLocation(10, 70);
+		Utils.clearFramesLayer();
+		cadastro.setLayer(1);
 		cadastro.setResizable(true);
 	}
 

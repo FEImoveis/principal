@@ -8,18 +8,23 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicBorders.MarginBorder;
 
 import sun.reflect.generics.visitor.Reifier;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.event.CaretEvent;
@@ -28,12 +33,70 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
+import Views.ImovelConsultaView;
+import Views.MenuView;
+import Views.UsuarioConsultaView;
+import Views.VisitaConsultaView;
+
 public class Utils {
 	static Toolkit toolkit = Toolkit.getDefaultToolkit();
 	static Dimension screen = toolkit.getScreenSize();
 	static Insets margin = new Insets(5, 5, 5, 5);
 	static GridBagConstraints restricoes = new GridBagConstraints();
+	public static MenuView m = new MenuView();
+	public static ImovelConsultaView imovelConsulta;
+	public static UsuarioConsultaView usuarioConsulta;
+	public static JDesktopPane desktopPane;
 
+
+	public static void MontaMenu() {
+//		desktopPane = new JDesktopPane();
+		
+		m.itemMenuImovel.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				imovelConsulta = new ImovelConsultaView();
+				imovelConsulta.setVisible(true);
+				imovelConsulta.setSize(1000, 600);
+				imovelConsulta.setLocation(10, 10);
+				imovelConsulta.setLayer(1);
+				Utils.clearFramesLayer();
+				desktopPane.add(imovelConsulta);
+			}
+		});
+		
+		m.itemMenuUsuario.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				usuarioConsulta = new UsuarioConsultaView();
+				usuarioConsulta.setVisible(true);
+				usuarioConsulta.setSize(1000, 600);
+				usuarioConsulta.setLocation(10, 10);
+				Utils.clearFramesLayer();
+				usuarioConsulta.setLayer(1);
+				
+				desktopPane.add(usuarioConsulta);
+			}
+		});
+		
+		m.itemMenuVisita.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VisitaConsultaView visita = new VisitaConsultaView();
+				visita.setVisible(true);
+				visita.setSize(1000, 600);
+				visita.setLocation(10, 10);
+				Utils.clearFramesLayer();
+				visita.setLayer(1);
+				desktopPane.add(visita);
+			}
+		});
+	}
+
+	
 	public static void setLocation(JFrame frame) {
 		int h, w;
 		w = 1024; // height
@@ -67,6 +130,13 @@ public class Utils {
 		restricoes.insets = Utils.margin;
 	}
 
+	public static void clearFramesLayer()
+	{
+		for (int i = 0; i < Utils.desktopPane.getComponentCount(); i++) {
+			((JInternalFrame)Utils.desktopPane.getComponent(i)).setLayer(0);
+		}
+	}
+	
 	public static void addGridBag(JPanel pnl, Component obj, int x, int y,
 			Insets margin, int gridwidth, int gridheight) {
 		restricoes.anchor = GridBagConstraints.WEST;
