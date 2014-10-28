@@ -201,8 +201,10 @@ public class ImovelCadastroView extends CadastroMaster {
 		});
 		Utils.addGridBag(pnlAtributos, txtRua, 1, 1, margin, 5, 1,
 				GridBagConstraints.WEST);
+		
 		txtRua.addFocusListener(this);
 		txtRua.addActionListener(this);
+		
 		// Complemento
 		lblComplemento = new JLabel("Complemento");
 		lblComplemento.setToolTipText("Complemteno do Imovel. EX: APTO 22");
@@ -218,6 +220,9 @@ public class ImovelCadastroView extends CadastroMaster {
 				   }
 				}
 		});
+		txtComplemento.addActionListener(this);
+		txtComplemento.addFocusListener(this);
+		
 		Utils.addGridBag(pnlAtributos, txtComplemento, 1, 2, margin, 5, 1,
 				GridBagConstraints.WEST);
 
@@ -236,6 +241,9 @@ public class ImovelCadastroView extends CadastroMaster {
 				   }
 				}
 		});
+		txtBairro.addActionListener(this);
+		txtBairro.addFocusListener(this);
+		
 		Utils.addGridBag(pnlAtributos, txtBairro, 1, 4, margin, 3, 1,
 				GridBagConstraints.WEST);
 
@@ -279,6 +287,8 @@ public class ImovelCadastroView extends CadastroMaster {
 				   }
 				}
 		});
+		txtValor.addActionListener(this);
+		txtValor.addFocusListener(this);
 		Utils.addGridBag(pnlAtributos, txtValor, 1, 5, margin, 3, 1,
 				GridBagConstraints.WEST);
 

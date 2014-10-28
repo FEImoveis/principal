@@ -112,6 +112,8 @@ public class UsuarioCadastroView extends CadastroMaster {
 				   }
 				}
 		});
+		txtNome.addActionListener(this);
+		txtNome.addFocusListener(this);
 		
 		txtEmail.setColumns(20);
 		txtEmail.addMouseListener(new MouseAdapter(){
@@ -132,7 +134,9 @@ public class UsuarioCadastroView extends CadastroMaster {
 				   }
 				}
 		});
-		
+		txtUsuario.addActionListener(this);
+		txtUsuario.addFocusListener(this);
+				
 		txtNumero.setColumns(20);
 		txtNumero.addMouseListener(new MouseAdapter(){
 			public void mouseReleased(MouseEvent e) {
@@ -142,6 +146,8 @@ public class UsuarioCadastroView extends CadastroMaster {
 				   }
 				}
 		});
+		txtNumero.addActionListener(this);
+		txtNumero.addFocusListener(this);
 		txtCodigo.setColumns(10);
 		txtCodigo.addMouseListener(new MouseAdapter(){
 			public void mouseReleased(MouseEvent e) {
@@ -151,7 +157,9 @@ public class UsuarioCadastroView extends CadastroMaster {
 				   }
 				}
 		});
-
+		txtCodigo.addFocusListener(this);
+		txtCodigo.addActionListener(this);
+		
 		pnlConteudo.setBorder(BorderFactory.createTitledBorder(
 				BorderFactory.createEtchedBorder(), "Cadastro de usuários"));
 

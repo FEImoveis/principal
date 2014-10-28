@@ -240,14 +240,34 @@ public abstract class CadastroMaster extends JInternalFrame implements FocusList
 	
 	public void popUpBtnDireitoMouse(){
 		btnDireitoMouse = new JPopupMenu();
-		btnDireitoMouse.add(new JMenuItem("Recortar"));
-		btnDireitoMouse.add(new JMenuItem("Copiar"));
-		btnDireitoMouse.add(new JMenuItem("Colar"));
+		btnDireitoMouse.add(new JMenuItem("Recortar")).addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				 aux.cut();	
+			}
+		});
+		btnDireitoMouse.add(new JMenuItem("Copiar")).addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				aux.copy();
+			}
+		});
+		btnDireitoMouse.add(new JMenuItem("Colar")).addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				aux.paste();
+			}
+		});
 	}
 	
 	public void focusLost(FocusEvent evt)
-	{
-	
+	{	
 	  aux =  (JTextField)evt.getComponent();
 	}
 	
