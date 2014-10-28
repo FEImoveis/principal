@@ -4,23 +4,36 @@ import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 import utils.Utils;
 
-public abstract class CadastroMaster extends JFrame {
+public abstract class CadastroMaster extends JInternalFrame {
 
 	private JPanel pnlPrincipal, pnlRodape, pnlCabecalho;
 	protected JPanel pnlConteudo;
 	public JLabel lblTitulo;
 	private JButton btnGravar, btnCancelar;
-
+	public MenuView m = new MenuView();
+	public ImovelConsultaView imovelConsulta;
+	public UsuarioConsultaView usuarioConsulta;
+	public JDesktopPane desktopPane;
+	public JMenuItem itemMenuImovel, itemMenuUsuario, itemMenuVisita, itemSair;
+	
 	public abstract void gravar();
 
 	public abstract void cancelar();
@@ -42,21 +55,30 @@ public abstract class CadastroMaster extends JFrame {
 
 	public CadastroMaster() {
 		InstanciaObjetos();
-
-		Utils.setLocation(this);
 		montaPnlCabecalho();
 		montaPnlConteudo();
 		montaPnlRodape();
+		montaMenu();
 		montaPnlPrincipal();
+		
 
 		this.add(pnlPrincipal);
 	}
 
+	private void montaMenu() {
+		// TODO Auto-generated method stub
+	
+	}
+	
 	private void montaPnlPrincipal() {
 		// TODO Auto-generated method stub
 		pnlPrincipal.add(pnlCabecalho, BorderLayout.NORTH);
 		pnlPrincipal.add(pnlConteudo, BorderLayout.CENTER);
 		pnlPrincipal.add(pnlRodape, BorderLayout.SOUTH);
+		menuConsultas();
+		menuEditar();
+//		Utils.m.menuEditar();
+		setJMenuBar(m);
 	}
 
 	private void montaPnlRodape() {
@@ -90,5 +112,144 @@ public abstract class CadastroMaster extends JFrame {
 	private void montaPnlConteudo() {
 		montaConteudo();
 	}
+	
+	public void menuEditar() {
+		// criação do menu Editar
+		JMenu menuEditar = new JMenu("Editar");
+		menuEditar.setMnemonic('E');
+		JMenuItem itemRecortar = new JMenuItem("Recortar...");
+		itemRecortar.setMnemonic('t');
+		itemRecortar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X,
+				InputEvent.CTRL_MASK));
+		;
+		JMenuItem itemCopiar = new JMenuItem("Copiar...");
+		itemCopiar.setMnemonic('b');
+		itemCopiar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,
+				InputEvent.CTRL_MASK));
+		;
+		JMenuItem itemColar = new JMenuItem("Colar...");
+		itemColar.setMnemonic('S');
+		itemColar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V,
+				InputEvent.CTRL_MASK));
+		;
+		menuEditar.add(itemRecortar);
+		menuEditar.add(itemCopiar);
+		menuEditar.add(itemColar);
+		m.add(menuEditar);
+
+		itemRecortar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		itemCopiar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		itemColar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+	}
+
+	public void menuConsultas() {
+		// TODO Auto-generated method stub
+		itemMenuImovel = new JMenuItem("Imóvel");
+		itemMenuUsuario = new JMenuItem("Usuário");
+		itemMenuVisita = new JMenuItem("Visita");
+		itemSair = new JMenuItem("Sair");
+		JMenu menu = new JMenu("Consultas");
+
+		itemMenuImovel.setMnemonic('I');
+		itemMenuImovel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,
+				ActionEvent.SHIFT_MASK + ActionEvent.CTRL_MASK));
+
+		itemMenuUsuario.setMnemonic('U');
+		itemMenuUsuario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U,
+				ActionEvent.SHIFT_MASK + ActionEvent.CTRL_MASK));
+
+		itemMenuVisita.setMnemonic('V');
+		itemMenuVisita.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V,
+				ActionEvent.SHIFT_MASK + ActionEvent.CTRL_MASK));
+
+		menu.add(itemMenuImovel);
+		menu.add(itemMenuUsuario);
+		menu.add(itemMenuVisita);
+		menu.addSeparator();
+		menu.add(itemSair);
+
+		itemSair.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int resp = JOptionPane.showConfirmDialog(null,
+						"Deseja encerrar a aplicação", "Confirmação",
+						JOptionPane.YES_NO_OPTION);
+
+				if (resp == 0)
+					System.exit(0);
+			}
+		});
+
+		m.itemMenuImovel.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				imovelConsulta = new ImovelConsultaView();
+				imovelConsulta.setVisible(true);
+				imovelConsulta.setSize(1000, 600);
+				imovelConsulta.setLocation(10, 10);
+				Utils.clearFramesLayer();
+				imovelConsulta.setLayer(1);
+				Utils.desktopPane.add(imovelConsulta);
+			}
+		});
+		
+		m.itemMenuUsuario.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				usuarioConsulta = new UsuarioConsultaView();
+				usuarioConsulta.setVisible(true);
+				usuarioConsulta.setSize(1000, 600);
+				usuarioConsulta.setLocation(10, 10);
+				
+				Utils.clearFramesLayer();
+				
+				usuarioConsulta.setLayer(1);
+				Utils.desktopPane.add(usuarioConsulta);
+			}
+		});
+		
+		m.itemMenuVisita.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VisitaConsultaView visita = new VisitaConsultaView();
+				visita.setVisible(true);
+				visita.setSize(1000, 600);
+				visita.setLocation(10, 10);
+				Utils.clearFramesLayer();
+				visita.setLayer(1);
+				Utils.desktopPane.add(visita);
+			}
+		});
+
+		this.add(menu);
+
+	}
+
 
 }

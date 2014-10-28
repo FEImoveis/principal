@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.InputEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
@@ -18,11 +20,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
 import utils.Utils;
 
-public abstract class CadastroMaster extends JInternalFrame {
+public abstract class CadastroMaster extends JInternalFrame implements FocusListener, ActionListener{
 
 	private JPanel pnlPrincipal, pnlRodape, pnlCabecalho;
 	protected JPanel pnlConteudo;
@@ -33,6 +37,9 @@ public abstract class CadastroMaster extends JInternalFrame {
 	public UsuarioConsultaView usuarioConsulta;
 	public JDesktopPane desktopPane;
 	public JMenuItem itemMenuImovel, itemMenuUsuario, itemMenuVisita, itemSair;
+	public JPopupMenu btnDireitoMouse;
+	private JTextField aux;
+	private String item;
 	
 	public abstract void gravar();
 
@@ -51,6 +58,7 @@ public abstract class CadastroMaster extends JInternalFrame {
 		btnCancelar = new JButton("Cancelar");
 		btnGravar = new JButton("Gravar");
 		lblTitulo = new JLabel();
+		
 	}
 
 	public CadastroMaster() {
@@ -136,31 +144,10 @@ public abstract class CadastroMaster extends JInternalFrame {
 		menuEditar.add(itemCopiar);
 		menuEditar.add(itemColar);
 		m.add(menuEditar);
-
-		itemRecortar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		itemCopiar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		itemColar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
+		
+		itemRecortar.addActionListener(this);
+		itemCopiar.addActionListener(this);
+		itemColar.addActionListener(this);
 
 	}
 
@@ -250,6 +237,43 @@ public abstract class CadastroMaster extends JInternalFrame {
 		this.add(menu);
 
 	}
-
+	
+	public void popUpBtnDireitoMouse(){
+		btnDireitoMouse = new JPopupMenu();
+		btnDireitoMouse.add(new JMenuItem("Recortar"));
+		btnDireitoMouse.add(new JMenuItem("Copiar"));
+		btnDireitoMouse.add(new JMenuItem("Colar"));
+	}
+	
+	public void focusLost(FocusEvent evt)
+	{
+	
+	  aux =  (JTextField)evt.getComponent();
+	}
+	
+	public void focusGained(FocusEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+   public void actionPerformed(ActionEvent e) {
+    	
+    	Object result = e.getSource();
+    	
+    	if(result.getClass() == JMenuItem.class)
+    	{
+	    	JMenuItem item = (JMenuItem) result ;
+	    	
+	    	if(item.getText() == "Copiar..."){
+	    		  aux.copy();
+	    	}
+	    	else if(item.getText() == "Colar..."){
+	    	  aux.paste();
+	    	}
+	    	else if(item.getText() == "Recortar..."){
+	    	  aux.cut();
+	    	}    
+    	}
+    }  
 
 }

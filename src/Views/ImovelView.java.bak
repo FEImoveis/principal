@@ -25,7 +25,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -35,7 +34,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.text.MaskFormatter;
 
 import utils.Utils;
 
@@ -71,8 +69,7 @@ public class ImovelView extends JPanel {
 	private JLabel lblValor;
 	private Image imgImovel;
 
-	private JFormattedTextField txtCod; 
-	private MaskFormatter mskCod;
+	private JTextField txtCod;
 	private JTextField txtRua;
 	private JTextField txtComplemento;
 	private JSpinner spiDormitorio;
@@ -194,13 +191,8 @@ public class ImovelView extends JPanel {
 		lblCod.setToolTipText("Código do Imovel");
 		Utils.addGridBag(pnlAtributos, lblCod, 0, 0, new Insets(0, 0, 0, 0), 1,
 				1, GridBagConstraints.EAST);
-		
-		try {
-	    	 mskCod = new MaskFormatter("####"); // define a mascara numerica	    	 
-	    }catch (Exception e){ 
-	    	JOptionPane.showMessageDialog(this, "Erro ao utilizar mascara no campo", "ERRO", JOptionPane.ERROR_MESSAGE);
-	    }
-		txtCod = new JFormattedTextField(mskCod);
+
+		txtCod = new JTextField(6);
 		txtCod.setEditable(false);
 		Utils.addGridBag(pnlAtributos, txtCod, 1, 0, margin, 2, 1, GridBagConstraints.WEST);
 

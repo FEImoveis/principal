@@ -15,13 +15,11 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
-import javax.swing.text.MaskFormatter;
 
 import utils.Utils;
 
@@ -32,7 +30,6 @@ public class UsuarioView extends JPanel {
 
 	private JLabel lblNome, lblUsuario, lblNumero, lblEmail, lblCodigo;
 	private JTextField txtNome, txtUsuario, txtNumero, txtEmail, txtCodigo;
-	private MaskFormatter mskEmail, mskNumero;
 	private JButton btnGravar, btnLimpar;
 	private JPanel pnlUsuario, pnlBotoes;
 	private GridBagConstraints restricoes = new GridBagConstraints();
@@ -50,10 +47,9 @@ public class UsuarioView extends JPanel {
 		lblUsuario = new JLabel("Usuário");
 		
 		txtEmail = new JTextField();
-		txtNome = new JTextField();		
+		txtNome = new JTextField();
+		txtNumero = new JTextField();
 		txtUsuario = new JTextField();
-		
-		
 	}
 	
 	protected void adicionaNoPanel(JPanel pnl, Component obj, int x, int y) {

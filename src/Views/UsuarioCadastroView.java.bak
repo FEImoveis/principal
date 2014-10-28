@@ -7,17 +7,13 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
 
 import businessObejct.UsuarioBO;
 import businessObejct.UsuarioBO.UsuarioException;
@@ -27,7 +23,6 @@ public class UsuarioCadastroView extends CadastroMaster {
 
 	private JLabel lblNome, lblUsuario, lblNumero, lblEmail, lblCodigo;
 	private JTextField txtNome, txtUsuario, txtNumero, txtEmail, txtCodigo;
-	private MaskFormatter mskEmail, mskNumero;
 	private JPanel pnlUsuario;
 	
 
@@ -40,17 +35,9 @@ public class UsuarioCadastroView extends CadastroMaster {
 		lblUsuario = new JLabel("Usuário");
 
 		txtEmail = new JTextField();
-		txtNome = new JTextField();		
+		txtNome = new JTextField();
+		txtNumero = new JTextField();
 		txtUsuario = new JTextField();
-		
-		try {
-	    	 mskNumero = new MaskFormatter("(##)####-####"); 
-	    	 mskNumero.setPlaceholderCharacter('_');
-	    }catch (Exception e){ 
-	    	// msg de erro
-	    }
-		txtNumero = new JFormattedTextField(mskNumero);
-		
 	}
 
 	public UsuarioCadastroView() {
@@ -104,53 +91,10 @@ public class UsuarioCadastroView extends CadastroMaster {
 
 	private void montaPnlConteudo() {
 		txtNome.setColumns(20);
-		txtNome.addMouseListener(new MouseAdapter(){
-			public void mouseReleased(MouseEvent e) {
-				   if (e.isPopupTrigger()){
-					  popUpBtnDireitoMouse();
-				      btnDireitoMouse.show(e.getComponent(), e.getX(), e.getY());
-				   }
-				}
-		});
-		
 		txtEmail.setColumns(20);
-		txtEmail.addMouseListener(new MouseAdapter(){
-			public void mouseReleased(MouseEvent e) {
-				   if (e.isPopupTrigger()){
-					  popUpBtnDireitoMouse();
-				      btnDireitoMouse.show(e.getComponent(), e.getX(), e.getY());
-				   }
-				}
-		});
-		
 		txtUsuario.setColumns(20);
-		txtUsuario.addMouseListener(new MouseAdapter(){
-			public void mouseReleased(MouseEvent e) {
-				   if (e.isPopupTrigger()){
-					  popUpBtnDireitoMouse();
-				      btnDireitoMouse.show(e.getComponent(), e.getX(), e.getY());
-				   }
-				}
-		});
-		
 		txtNumero.setColumns(20);
-		txtNumero.addMouseListener(new MouseAdapter(){
-			public void mouseReleased(MouseEvent e) {
-				   if (e.isPopupTrigger()){
-					  popUpBtnDireitoMouse();
-				      btnDireitoMouse.show(e.getComponent(), e.getX(), e.getY());
-				   }
-				}
-		});
 		txtCodigo.setColumns(10);
-		txtCodigo.addMouseListener(new MouseAdapter(){
-			public void mouseReleased(MouseEvent e) {
-				   if (e.isPopupTrigger()){
-					  popUpBtnDireitoMouse();
-				      btnDireitoMouse.show(e.getComponent(), e.getX(), e.getY());
-				   }
-				}
-		});
 
 		pnlConteudo.setBorder(BorderFactory.createTitledBorder(
 				BorderFactory.createEtchedBorder(), "Cadastro de usuários"));

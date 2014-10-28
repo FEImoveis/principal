@@ -1,8 +1,6 @@
 package Views;
 
 import java.awt.Insets;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -51,32 +49,8 @@ public class VisitaCadastroView extends CadastroMaster {
 		InstanciaObjetos();
 
 		txtImovel.setColumns(40);
-		txtImovel.addMouseListener(new MouseAdapter(){
-			public void mouseReleased(MouseEvent e) {
-				   if (e.isPopupTrigger()){
-					  popUpBtnDireitoMouse();
-				      btnDireitoMouse.show(e.getComponent(), e.getX(), e.getY());
-				   }
-				}
-		});
 		txtCorretor.setColumns(40);
-		txtCorretor.addMouseListener(new MouseAdapter(){
-			public void mouseReleased(MouseEvent e) {
-				   if (e.isPopupTrigger()){
-					  popUpBtnDireitoMouse();
-				      btnDireitoMouse.show(e.getComponent(), e.getX(), e.getY());
-				   }
-				}
-		});
 		txtData.setColumns(15);
-		txtData.addMouseListener(new MouseAdapter(){
-			public void mouseReleased(MouseEvent e) {
-				   if (e.isPopupTrigger()){
-					  popUpBtnDireitoMouse();
-				      btnDireitoMouse.show(e.getComponent(), e.getX(), e.getY());
-				   }
-				}
-		});
 		txtObservacao.setSize(300, 200);
 
 		Utils.addGridBag(pnlConteudo, lblImovel, 0, 0);
