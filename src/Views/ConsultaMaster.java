@@ -58,6 +58,7 @@ public abstract class ConsultaMaster extends JInternalFrame {
 	}
 
 	public ConsultaMaster() {
+		super("Consulta", false, true, false, true);
 		InstanciaObjeto();
 
 		montaPnlPrincipal();

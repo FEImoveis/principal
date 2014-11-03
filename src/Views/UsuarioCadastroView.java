@@ -73,6 +73,7 @@ public class UsuarioCadastroView extends CadastroMaster {
 	public void gravar() {
 		UsuarioBO usuario = new UsuarioBO();
 	
+		usuarioConsulta.modelo.addRow(new Object[]{txtCodigo.getText(), txtNome.getText(), txtUsuario.getText()});
 		try {
 			usuario.setNome(txtNome.getText());
 			usuario.setCodigo(Integer.parseInt(txtCodigo.getText()));
@@ -87,7 +88,12 @@ public class UsuarioCadastroView extends CadastroMaster {
 		}
 		catch (Exception e) {
 			// TODO: handle exception
-		}		
+		}	
+		
+		txtNome.setText("");
+		txtNumero.setText("");
+		txtEmail.setText("");
+		txtUsuario.setText("");
 	}
 
 	@Override
