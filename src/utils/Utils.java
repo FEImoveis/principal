@@ -33,6 +33,7 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
+import Views.CidadeListaConsultaView;
 import Views.ImovelConsultaView;
 import Views.MenuView;
 import Views.UsuarioConsultaView;
@@ -46,6 +47,7 @@ public class Utils {
 	public static MenuView m = new MenuView();
 	public static ImovelConsultaView imovelConsulta;
 	public static UsuarioConsultaView usuarioConsulta;
+	public static CidadeListaConsultaView cidadeConsulta;
 	public static JDesktopPane desktopPane;
 
 

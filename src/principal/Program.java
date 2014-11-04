@@ -43,6 +43,7 @@ import businessObejct.UsuarioBO.UsuarioException;
 import utils.Utils;
 import de.javasoft.plaf.synthetica.SyntheticaClassyLookAndFeel;
 import Views.CadastroMaster;
+import Views.CidadeListaConsultaView;
 import Views.ConsultaMaster;
 import Views.ImovelConsultaView;
 import Views.ImovelView;
@@ -59,6 +60,7 @@ class Home extends JFrame {
 	private MenuView m = new MenuView();
 	private ImovelConsultaView imovelConsulta;
 	private UsuarioConsultaView usuarioConsulta;
+	private CidadeListaConsultaView cidadeConsulta;
 
 	public Home() {
 		pnlPrincipal = new JPanel(new BorderLayout());
@@ -77,7 +79,7 @@ class Home extends JFrame {
 		JToolBar barra = new JToolBar();
 		JButton abreFrameUm = new JButton("Imóvel");
 		String path = "src\\Views\\imagens\\lupa.png";
-		
+
 		Image image;
 		try {
 			image = Utils.resizeImage(ImageIO.read(new File(path)), ImageIO
@@ -87,17 +89,17 @@ class Home extends JFrame {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+
 		abreFrameUm.setToolTipText("Abre o Frame Interno Um");
 		JButton abreFrameDois = new JButton("Usuário");
 		abreFrameDois.setToolTipText("Abre o Frame Interno Dois");
-		
+
 		barra.add(abreFrameUm);
 		barra.add(abreFrameDois);
 		barra.addSeparator();
-		
+
 		abreFrameUm.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				imovelConsulta = new ImovelConsultaView();
@@ -110,7 +112,7 @@ class Home extends JFrame {
 		});
 
 		abreFrameDois.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				usuarioConsulta = new UsuarioConsultaView();
@@ -121,7 +123,7 @@ class Home extends JFrame {
 				Utils.desktopPane.add(usuarioConsulta);
 			}
 		});
-		
+
 		MontaMenu();
 
 		this.setUndecorated(true);
@@ -151,7 +153,7 @@ class Home extends JFrame {
 				Utils.desktopPane.add(imovelConsulta);
 			}
 		});
-		
+
 		m.itemMenuUsuario.addActionListener(new ActionListener() {
 
 			@Override
@@ -164,7 +166,7 @@ class Home extends JFrame {
 				Utils.desktopPane.add(usuarioConsulta);
 			}
 		});
-		
+
 		m.itemMenuVisita.addActionListener(new ActionListener() {
 
 			@Override
@@ -173,8 +175,22 @@ class Home extends JFrame {
 				visita.setVisible(true);
 				visita.setSize(1000, 600);
 				visita.setLocation(10, 10);
-				
+
 				Utils.desktopPane.add(visita);
+			}
+		});
+
+		m.itemMenuCidade.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cidadeConsulta = new CidadeListaConsultaView();
+				cidadeConsulta.setVisible(true);
+				cidadeConsulta.setSize(100, 600);
+				cidadeConsulta.setLocation(10, 10);
+				
+				Utils.desktopPane.add(cidadeConsulta);
+
 			}
 		});
 	}

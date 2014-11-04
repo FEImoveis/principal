@@ -81,6 +81,7 @@ public class UsuarioCadastroView extends CadastroMaster {
 			usuario.setNumero(txtNumero.getText());
 			usuario.setUsuario(txtUsuario.getText());
 			
+			usuarioConsulta.modelo.addRow(new Object[]{ usuario.getCodigo(), usuario.getNome(), usuario.getUsuario()});
 			usuario.Gravar();
 		} catch(UsuarioException e)
 		{
@@ -90,6 +91,10 @@ public class UsuarioCadastroView extends CadastroMaster {
 			// TODO: handle exception
 		}	
 		
+		limpaCampos();
+	}
+
+	private void limpaCampos() {
 		txtNome.setText("");
 		txtNumero.setText("");
 		txtEmail.setText("");

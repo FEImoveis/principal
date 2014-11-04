@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
@@ -25,7 +26,7 @@ public class MenuView extends JMenuBar {
 	private UsuarioConsultaView usuarioConsulta;
 
 	public JButton btnPrincipal, btnUsuario, btnImovel, btnVisita;
-	public JMenuItem itemMenuImovel, itemMenuUsuario, itemMenuVisita, itemSair;
+	public JMenuItem itemMenuImovel, itemMenuUsuario, itemMenuVisita, itemMenuCidade, itemSair;
 
 	public MenuView() {
 		// TODO Auto-generated constructor stub
@@ -95,6 +96,7 @@ public class MenuView extends JMenuBar {
 		itemMenuImovel = new JMenuItem("Imóvel");
 		itemMenuUsuario = new JMenuItem("Usuário");
 		itemMenuVisita = new JMenuItem("Visita");
+		itemMenuCidade = new JMenuItem("Cidade");
 		itemSair = new JMenuItem("Sair");
 		JMenu menu = new JMenu("Consultas");
 
@@ -113,6 +115,7 @@ public class MenuView extends JMenuBar {
 		menu.add(itemMenuImovel);
 		menu.add(itemMenuUsuario);
 		menu.add(itemMenuVisita);
+		menu.add(itemMenuCidade);
 		menu.addSeparator();
 		menu.add(itemSair);
 
